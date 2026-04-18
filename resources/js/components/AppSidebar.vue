@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
 import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-vue-next';
+import CourseCategoryController from '@/actions/App/Http/Controllers/Admin/CourseCategoryController';
+import EnrollmentController from '@/actions/App/Http/Controllers/EnrollmentController';
+
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -16,12 +19,28 @@ import {
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
+import CourseController from '@/actions/App/Http/Controllers/Admin/CourseController';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+    {
+        title: 'Course Categories',
+        href: CourseCategoryController.index().url,
+        icon: FolderGit2,
+    },
+    {
+        title: 'Courses',
+        href: CourseController.index().url,
+        icon: BookOpen,
+    },
+    {
+        title: 'Enrollments',
+        href: EnrollmentController.index().url,
+        icon: BookOpen,
     },
 ];
 

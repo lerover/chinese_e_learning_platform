@@ -42,6 +42,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+            'enrolledCourses' => $request->user()?->enrolledCourses()->select('course_id', 'status')->where('status', '!=', 'rejected')->get() ?? collect(),
         ];
     }
 }
