@@ -13,7 +13,7 @@ Route::inertia('/', 'Welcome', [
     'canRegister' => $canRegister,
 ])->name('home');
 
-Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
 
     Route::resource('course-categories', CourseCategoryController::class);
